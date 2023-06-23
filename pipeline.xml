@@ -24,15 +24,12 @@
 	</params>
 
 	<tasks>
-		<task id="filtering_1"/>
-		<task id="filtering_2" params="batchSize_filtering_2"/>
-		<task id="reformat" after="filtering_1 filtering_2"/>
-		<task id="merge" after="reformat"/>
-		<task id="disambiguate" after="merge"/>
-		<task id="reverse-complement" after="disambiguate" params="batchSize_reverse_complement"/>
-        
-		<!-- final-task is not a SEDA command and thus uses "src" to specify the path to the bash script that must
-        be executed. -->	
-		<task id="final-task" after="reverse-complement" src="task-scripts/final-task.sh"></task>
+		<task id="pattern-filtering"/>
+		<task id="pfamscan" after="pattern-filtering"/>
 	</tasks>
+
+	<metadata>
+		<task-description id="pattern-filtering">Sequence filtering</task-description>
+		<task-description id="pfamscan">Annotate sequences</task-description>
+	</metadata>
 </pipeline>

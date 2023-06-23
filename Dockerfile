@@ -1,6 +1,6 @@
 FROM pegi3s/utilities:0.22.0 as base_pegi3s_utilities
 
-FROM pegi3s/seda:1.6.0-SNAPSHOT
+FROM pegi3s/seda:1.6.0-SNAPSHOT-20230620.1
 
 COPY --from=base_pegi3s_utilities /opt/scripts/create_batches /opt/scripts/create_batches
 
