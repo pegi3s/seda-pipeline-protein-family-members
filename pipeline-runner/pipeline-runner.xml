@@ -6,4 +6,7 @@
 	<runner>
 		${script_pipeline_runner}
 	</runner>
+	<runner tasks="extract-headers">
+        /bin/sh -c "${task_code}"
+    </runner>
 </runners>

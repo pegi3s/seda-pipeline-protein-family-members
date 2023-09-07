@@ -26,10 +26,12 @@
 	<tasks>
 		<task id="pattern-filtering"/>
 		<task id="pfamscan" after="pattern-filtering"/>
+		<task id="extract-headers" after="pfamscan" src="task-scripts/extract-headers.sh"/>
 	</tasks>
 
 	<metadata>
 		<task-description id="pattern-filtering">Sequence filtering</task-description>
 		<task-description id="pfamscan">Annotate sequences</task-description>
+		<task-description id="extract-headers">Extract FASTA headers and generate a TSV file</task-description>
 	</metadata>
 </pipeline>
