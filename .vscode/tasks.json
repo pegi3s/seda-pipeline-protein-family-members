@@ -21,7 +21,7 @@
         {
             "label": "build-and-run-docker",
             "type": "shell",
-            "command": "source .vscode/test-directories.txt && $(pwd)/run.sh ${TEST_DIR_FULL} \"-st extract-headers\"",
+            "command": "source .vscode/test-directories.txt && $(pwd)/run.sh ${TEST_DIR_FULL}",
             "problemMatcher": [],
             "options": {
                 "env": {

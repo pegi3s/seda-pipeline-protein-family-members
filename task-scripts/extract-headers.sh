@@ -4,9 +4,6 @@ set -o errexit
 
 TASK_AFTER=$(env | grep "^task_after=" | sed 's/^task_after*=//')
 
-echo ${task_id}
-echo ${TASK_AFTER}
-
 INPUT=${workingDirectory}/${output}/${TASK_AFTER}
 OUTPUT=${workingDirectory}/${output}/${task_id}
 
@@ -14,7 +11,7 @@ mkdir -p ${OUTPUT}
 
 FILES=$(ls -1 ${INPUT})
 
-output_file="${OUTPUT}/stats.tsv"
+output_file="${OUTPUT}/_stats.tsv"
 colnames="Name\tSequence count\tMin. seq. length\tMax seq. length\tFile size (Kb)"
 echo "${colnames}" > "${output_file}"
 
@@ -30,5 +27,7 @@ do
 	file_size_kb=$(awk -v v1="${file_size}" -v v2=1000 'BEGIN {printf "%.2f", (v1/v2)}')
 	
 	line="${file_name}\t${sequence_count}\t${min_len}\t${max_len}\t${file_size_kb}" 
-	echo "${line}" >> "${OUTPUT}/stats.tsv"
+	echo "${line}" >> "${output_file}"
+
+	cat ${file} | grep '>' | sed 's/^>//g' > "${OUTPUT}/headers_${file_name}.txt"
 done
