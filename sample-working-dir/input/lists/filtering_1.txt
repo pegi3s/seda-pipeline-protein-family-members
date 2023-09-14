@@ -1,2 +1,0 @@
-input/filtering_1/1_1.fasta
-input/filtering_1/1_2.fasta
