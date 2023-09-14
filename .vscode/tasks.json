@@ -21,12 +21,17 @@
         {
             "label": "build-and-run-docker",
             "type": "shell",
-            "dependsOn": [
-                "build",
-                "run-docker"
-            ],
-            "dependsOrder": "sequence",
-            "problemMatcher": []
+            "command": "source .vscode/test-directories.txt && $(pwd)/run.sh ${TEST_DIR_FULL} \"-st extract-headers\"",
+            "problemMatcher": [],
+            "options": {
+                "env": {
+                    "SEDA_JAVA_MEMORY": "-Xmx8G"
+                }
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
         },
         {
             "label": "show SEDA help",
