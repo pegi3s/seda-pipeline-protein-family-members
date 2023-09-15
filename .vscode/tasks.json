@@ -8,18 +8,29 @@
             "problemMatcher": []
         },
         {
-            "label": "run-docker",
+            "label": "show SEDA help",
             "type": "shell",
-            "command": "$(pwd)/run.sh $(pwd)/sample-working-dir",
+            "command": "docker run --rm pegi3s/seda:1.6.0-SNAPSHOT /opt/SEDA/run-cli.sh help",
+            "problemMatcher": []
+        },
+        {
+            "label": "run-docker [full test]",
+            "type": "shell",
+            "command": "source .vscode/test-directories.txt && sudo rm -rf ${TEST_DIR_FULL}/output && $(pwd)/run.sh ${TEST_DIR_FULL}",
             "problemMatcher": [],
+            "dependsOn": "build",
             "options": {
                 "env": {
-                    "SEDA_JAVA_MEMORY": "-Xmx6G"
+                    "SEDA_JAVA_MEMORY": "-Xmx8G"
                 }
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
             }
         },
         {
-            "label": "build-and-run-docker",
+            "label": "run-docker [quick]",
             "type": "shell",
             "command": "source .vscode/test-directories.txt && $(pwd)/run.sh ${TEST_DIR_FULL}",
             "problemMatcher": [],
@@ -34,9 +45,10 @@
             }
         },
         {
-            "label": "show SEDA help",
+            "label": "export graph",
             "type": "shell",
-            "command": "docker run --rm pegi3s/seda:1.6.0-SNAPSHOT /opt/SEDA/run-cli.sh help"
+            "command": "compi export-graph -o pipeline.png --line-width 2",
+            "problemMatcher": []
         }
     ]
 }

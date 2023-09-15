@@ -38,6 +38,6 @@ docker run --rm -v /var/run/docker.sock:/var/run/docker.sock -v /tmp:/tmp \
     -v "${WORKING_DIR}:${WORKING_DIR}" \
     -w "${WORKING_DIR}" \
     ${DOCKER_ENV_PARAMS} \
-    test/seda-cli-pipeline \
+    pegi3s/seda-pipeline-protein-family-members \
         /compi run -p /pipeline.xml -o -r /pipeline-runner.xml ${COMPI_PARAMS} ${PIPELINE_PARAMS_FILE} -- \
             --workingDirectory ${WORKING_DIR}
